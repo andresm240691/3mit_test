@@ -2,7 +2,7 @@ import logging
 import requests
 from treemittest.settings import API_URL
 from bs4 import BeautifulSoup
-from coins.models import CoinModel
+from coins.models import Coin as CoinModel
 
 
 class CoinApi:

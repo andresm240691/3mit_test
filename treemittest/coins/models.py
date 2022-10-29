@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class CoinModel(models.Model):
+class Coin(models.Model):
     table_index = models.IntegerField(null=True)
     img_src = models.CharField(null=True, blank=True, max_length=250)
     name = models.CharField(max_length=150)

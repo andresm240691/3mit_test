@@ -3,7 +3,7 @@
 ### Requirements ###
 
 * Python 3.8.5
-* Postgres 12
+* Postgres 14
 
 
 ### Enviroments ###
@@ -19,6 +19,7 @@
     export ALLOWED_HOSTS=*
     export LOG_PATH='/home/andres/Projects/3mit_test/logs/debug.log'
     export API_URL='https://www.coingecko.com/es/all-cryptocurrencies
+    export STATIC_ROOT='/home/andres/Projects/3mit_test/3mit_test/statics'
 
 ### Installation ###
     ### make a virtual enviroment ###

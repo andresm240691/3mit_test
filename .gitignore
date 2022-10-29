@@ -2,3 +2,5 @@
 /.env
 /treemittest/treemittest/.env
 /treemittest/coins/migrations/
+/treemittest/auth/migrations/
+/treemittest/staticfiles/
