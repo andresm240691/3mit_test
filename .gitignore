@@ -1,2 +1,4 @@
 /treemittest/currencies/migrations/
+/.env
 /treemittest/treemittest/.env
+/treemittest/coins/migrations/

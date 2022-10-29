@@ -9,7 +9,7 @@
 ### Enviroments ###
 
     # Database Postgres SQL 
-    export DB_NAME=3mit_test
+    export DB_NAME=treemittest
     export DB_USER=admin
     export DB_PASSWORD=admin
     export DB_HOST=localhost
@@ -17,8 +17,8 @@
 
     # Configuration
     export ALLOWED_HOSTS=*
-    export FIXTURE_ROUTE='<str_path>/turpial_test/turpial_test/fixtures' 
-    # Example /home/andres/Projects/turpial_test/turpial_test/fixtures'
+    export LOG_PATH='/home/andres/Projects/3mit_test/logs/debug.log'
+    export API_URL='https://www.coingecko.com/es/all-cryptocurrencies
 
 ### Installation ###
     ### make a virtual enviroment ###
@@ -34,11 +34,6 @@
     python manage.py makemigrations
     python manage.py migrate
 
-    ### Load Fixtures ###
-    python manage.py pokemon
-    python manage.py area
-    python manage.py region
-    
     ### Create User ####
     python manage.py createsuperuser
         - username: admin
@@ -47,13 +42,5 @@
     ### Run the project ###
     python manage.py runserver 0.0.0.0:8000
 
-### Note ### 
-    
-    The request_test.json file contains the 
-    collection of calls to the api
-
-
-
-
-    
+  
 
