@@ -8,6 +8,6 @@ urlpatterns = [
          name='coins-detail'),
     path('purchase', views.PurchaseCoinPageView.as_view(),
          name='coins-purchase'),
-    path('/briefcase', views.BriefCasePageView.as_view(),
+    path('briefcase', views.BriefCasePageView.as_view(),
          name='briefcase'),
 ]

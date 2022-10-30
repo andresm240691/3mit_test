@@ -175,4 +175,4 @@ LOGGING = {
 }
 
 LOGIN_REDIRECT_URL = "/coins"
-LOGOUT_REDIRECT_URL = "/login"
+LOGOUT_REDIRECT_URL = "/auth/login"
