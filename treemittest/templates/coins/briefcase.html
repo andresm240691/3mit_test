@@ -1,0 +1,63 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Briefcase</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Briefcase</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Coin</th>
+                            <th>Quantity</th>
+                            <th>Price&nbsp;US$</th>
+                            <th>Value&nbsp;US$</th>
+                            <th>Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in objects %}
+                        <tr>
+                            <td>{{obj.id}}</td>
+                            <td>{{obj.name}}</td>
+                            <td>{{obj.total_quantity|floatformat:2 }}</td>
+                            <td>{{obj.price}}</td>
+                            <td>{{obj.value}}</td>
+                            <td>
+                                {% if obj.trend == 'POSITIVE'%}
+                                    <a href="#" class="btn btn-success btn-circle">
+                                        <i class="fas fa-arrow-up"></i>
+
+                                    </a>
+                                {%else%}
+                                    <a href="#" class="btn btn-danger btn-circle">
+                                        <i class="fas fa-arrow-down"></i>
+                                    </a>
+                                {%endif%}
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th><strong>Total</strong></th>
+                            <th>{{total|floatformat:2}}</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

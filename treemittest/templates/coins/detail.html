@@ -92,5 +92,31 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xl-9 col-md-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">To Buy</h6>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'coins-purchase' %}">
+                     {% csrf_token %}
+                      <input type="hidden" class="form-control mb-2"  value="{{object.id}}" name="coin_id">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Quantity</label>
+                          <input type="number" class="form-control" id="inputEmail4" placeholder="0.00" step="1" name="quantity">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="inputPassword4">Amount</label>
+                          <input type="text" class="form-control" id="inputPassword4" placeholder="1 US$" name="amount">
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

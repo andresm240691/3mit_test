@@ -2,7 +2,11 @@ import logging
 import requests
 from treemittest.settings import API_URL
 from bs4 import BeautifulSoup
-from coins.models import Coin as CoinModel
+from coins.models import (
+    Coin as CoinModel,
+    BriefCase,
+    Operation
+)
 
 
 class CoinApi:
@@ -159,3 +163,47 @@ class CoinApi:
             logging.exception('Exception in utils/CoinApi.execute')
         finally:
             return flag
+
+
+def register_operation(user, data):
+    flag = True
+    try:
+        coin_query = CoinModel.objects.filter(id=data.get('coin_id')).first()
+        quantity = float(data.get('quantity'))
+        amount = float(data.get('amount'))
+
+        # Register in Briefcase
+        bc_query = BriefCase.objects.filter(user=user, coin=coin_query).first()
+        if bc_query:
+            bc_query.total_quantity = bc_query.total_quantity + quantity
+            average = amount / quantity
+            str_trend = 'NEGATIVE' if average < coin_query.price \
+                else 'POSITIVE'
+            bc_query.average_purchase = average
+            bc_query.trend = str_trend
+            bc_query.save()
+        else:
+            bc_query = BriefCase()
+            bc_query.coin = coin_query
+            bc_query.user = user
+            bc_query.total_quantity = quantity
+            average = amount / quantity
+            str_trend = 'NEGATIVE' if average < coin_query.price \
+                else 'POSITIVE'
+            bc_query.average_purchase = average
+            bc_query.trend = str_trend
+            bc_query.save()
+
+        # Register the purchase
+        operation_query = Operation()
+        operation_query.coin = coin_query
+        operation_query.user = user
+        operation_query.total_quantity = quantity
+        operation_query.amount = amount
+        operation_query.briefcase = bc_query
+        operation_query.save()
+    except Exception:
+        logging.exception('Exception in register_operation')
+        flag = False
+    finally:
+        return flag
