@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.http import HttpResponse
-
-
 import logging
+from django.views.generic import (
+    TemplateView,
+    DetailView
+)
+from .models import Coin
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -15,4 +14,11 @@ class ListCoinsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ListCoinsPageView, self).get_context_data(**kwargs)
+        row_list = Coin.objects.all()
+        context['row_list'] = row_list
         return context
+
+
+class DetailCoinsPageView(DetailView):
+    template_name = "coins/detail.html"
+    model = Coin
